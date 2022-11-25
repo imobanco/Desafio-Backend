@@ -68,7 +68,16 @@ Então no projeto, deverá existir as instruções de instalação de TODAS as t
 
 Da mesma forma, deverá existir a documentação utilização do projeto.
 
-### RT6 Programas e dependências {BÔNUS}
+### RT6 Arquitetura do projeto
+Para que o projeto da conta digital possa crescer corretamente, é necessário que seja utilizado uma arquitetura MVC ou hexagonal. Possibilitando centralizar e facilitar a manutenção das regras de negócio ao longo prazo da evolução do projeto.
+
+As seguintes abordagens não são recomendadas:
+- fat models
+- regras de negócio nas views/serializers DRF
+
+Um bom guia de implementação é o https://phalt.github.io/django-api-domains/
+
+### RT7 Programas e dependências {BÔNUS}
 Como já foi citado no RT4, a reprodutibilidade do projeto é essencial.
 
 Então o ideal é que o desenvolvedor **NÃO** precise instalar diversas dependências na sua máquina para poder executar o projeto. Na verdade, o ideal é que o desenvolvedor não precise instalar **NENHUMA** dependência técnica em sua máquina via `APT` (considerando o RT5).
@@ -77,7 +86,7 @@ Isso pode ser alcançado utilizado NIX.
 
 Esse critério bônus consiste em utilizar o [gerenciador de pacotes NIX](https://nixos.org/download.html) para criar um ambiente de desenvolvimento com as dependências necessárias. Por exemplo, podman, python, poetry, postgresql dentre outros programas necessários.
 
-### RT7 Boa qualidade de código {BÔNUS}
+### RT8 Boa qualidade de código {BÔNUS}
 O código deverá adotar boas práticas de programação. Por exemplo, nomenclatura semântica para variáveis e entidades, formatação de código, testes e outros fatores.
 
 Para a formatação de código recomendamos a utilização das libs:
@@ -88,7 +97,6 @@ Para a formatação de código recomendamos a utilização das libs:
 Para os testes, recomendamos eles sejam feitos considerando uma abordagem BDD. Testes unitários e técnicos são legais. Mas lembre-se de testar COMPORTAMENTOS e não DETALHES DE IMPLEMENTAÇÃO. 
 
 E a melhor forma de garantir que essas diretrizes estejam sendo obedecidas de fato é utilizar um CI que rode automaticamente a formatação e os testes do projeto.
-
 
 ## Requisitos Funcionais (RF)
 
