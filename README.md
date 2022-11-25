@@ -33,15 +33,21 @@ Além disso, existe um aspecto de rede social na aplicação. Permitindo que usu
 
 ## Requisitos Técnicos (RT)
 
+---
+
 ### RT1 Linguagem e framework
 O projeto deverá ser feito em Python utilizando os frameworks Django e Django Rest Framework!
 
 > recomendamos utilizar versões atualizadas. Por exemplo python 3.8^, Django 3.2^
 
+---
+
 ### RT2 Banco de dados e persistência
 O projeto deverá utilizar o banco de dados PostgreSQL para realizar sua persistências.
 
 > recomendamos utilizar versões atualizadas. Por exemplo psql 13^
+
+---
 
 ### RT3 Bibliotecas
 A utilização de bibliotecas python é incentivada!
@@ -49,6 +55,8 @@ A utilização de bibliotecas python é incentivada!
 > Por que reinventar a roda se temos open source e bibliotecas maravilhosas em python?
 
 Para gerenciar as dependências do projeto o poetry deverá ser utilizado, juntamente ao arquivo `pyproject.toml`.
+
+---
 
 ### RT4 Containers
 A reprodutibilidade e portabilidade do projeto é essencial. Então deverá ser utilizado alguma tecnologia de containers.
@@ -59,6 +67,8 @@ Algumas das alternativas são:
 
 > existem outras tecnologias, porém complexidade desnecessária é um ponto negativo. Então não recomendamos utilizar kubernets e orquestradores de containers mais complexos.
 
+---
+
 ### RT5 Instruções de instalação e execução
 Como já foi citado no RT4, a reprodutibilidade do projeto é essencial.
 
@@ -67,6 +77,8 @@ Então no projeto, deverá existir as instruções de instalação de TODAS as t
 > Para esse critério, deverá ser levado em consideração que o sistema operacional padrão suportado pela empresa é o Ubuntu, de preferência o LTS mais recente.
 
 Da mesma forma, deverá existir a documentação utilização do projeto.
+
+---
 
 ### RT6 Arquitetura do projeto
 Para que o projeto da conta digital possa crescer corretamente, é necessário que seja utilizado uma arquitetura MVC ou hexagonal. Possibilitando centralizar e facilitar a manutenção das regras de negócio ao longo prazo da evolução do projeto.
@@ -77,6 +89,8 @@ As seguintes abordagens não são recomendadas:
 
 Um bom guia de implementação é o https://phalt.github.io/django-api-domains/
 
+---
+
 ### RT7 Programas e dependências {BÔNUS}
 Como já foi citado no RT4, a reprodutibilidade do projeto é essencial.
 
@@ -85,6 +99,8 @@ Então o ideal é que o desenvolvedor **NÃO** precise instalar diversas depend�
 Isso pode ser alcançado utilizado NIX.
 
 Esse critério bônus consiste em utilizar o [gerenciador de pacotes NIX](https://nixos.org/download.html) para criar um ambiente de desenvolvimento com as dependências necessárias. Por exemplo, podman, python, poetry, postgresql dentre outros programas necessários.
+
+---
 
 ### RT8 Boa qualidade de código {BÔNUS}
 O código deverá adotar boas práticas de programação. Por exemplo, nomenclatura semântica para variáveis e entidades, formatação de código, testes e outros fatores.
@@ -98,7 +114,11 @@ Para os testes, recomendamos eles sejam feitos considerando uma abordagem BDD. T
 
 E a melhor forma de garantir que essas diretrizes estejam sendo obedecidas de fato é utilizar um CI que rode automaticamente a formatação e os testes do projeto.
 
+---
+
 ## Requisitos Funcionais (RF)
+
+---
 
 ### RF1 Usuário/Pessoa
 
@@ -130,6 +150,8 @@ Porém, ele NÃO poderá alterar os dados de OUTROS usuários.
 #### RF1.4 Deleção de dados
 Os dados não podem ser deletados!
 
+---
+
 ### RF2 Conta Digital
 Cada usuário/pessoa possui sua conta digital. 
 
@@ -150,6 +172,8 @@ Os dados da conta digital NÃO PODEM ser alterados por nenhum usuário!
 
 #### RF2.4 Deleção de dados
 Os dados da conta digital NÃO PODEM ser deletados!
+
+---
 
 ### RF3 Depósito
 O usuário precisa ser capaz de realizado uma carga/depósito em sua conta digital.
@@ -175,6 +199,8 @@ Os dados dos depósitos NÃO PODEM ser alterados por nenhum usuário!
 
 #### RF3.4 Deleção de dados
 Os dados da conta digital NÃO PODEM ser deletados!
+
+---
 
 ### RF4 Transferência
 O usuário poderá utilizar o seu saldo da conta digital para realizar uma transferência para QUALQUER outro usuário no sistema.
@@ -206,6 +232,8 @@ Exceto a flag de `público`, que pode ser alterada pelo usuário de ORIGEM da tr
 
 #### RF4.4 Deleção de dados
 Os dados da transferência NÃO PODEM ser deletados!
+
+---
 
 ### RF5 Comentários
 Os usuários podem comentar em transferências que eles podem VISUALIZAR (vide RF4.2).
