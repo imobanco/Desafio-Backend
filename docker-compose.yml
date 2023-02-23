@@ -1,0 +1,32 @@
+version: "3.7"
+
+services:
+  db_imo:
+    image: postgres
+    container_name: db_imo
+    ports:
+      - 5433:5432
+    environment:
+      - POSTGRES_USER=imo_banco
+      - POSTGRES_PASSWORD=imo_banco
+      - POSTGRES_DB=imo2023
+    volumes:
+      - pgdata:/data/postgres
+  web:
+    build: .
+    container_name: imo_api
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/imo
+    ports:
+      - "8000:8000"
+    links:
+      - db_imo
+    depends_on:
+      - db_imo
+    stdin_open: true
+    tty: true
+
+volumes:
+  pgdata:
+    driver: local
