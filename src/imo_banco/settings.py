@@ -28,6 +28,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework_simplejwt',   
+
+    'app',
 ]
 
 REST_FRAMEWORK = {
@@ -36,7 +38,7 @@ REST_FRAMEWORK = {
     ),
 }
 
-
+AUTH_USER_MODEL = "app.Profile"
 
 
 MIDDLEWARE = [
