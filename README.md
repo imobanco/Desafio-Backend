@@ -137,7 +137,7 @@ A aplicação deve permitir que usuários se cadastrem na plataforma, inserindo 
 
 > a senha deverá ser criptograda no banco de dados!
 
-### RF1.2 Visualização de dados
+#### RF1.2 Visualização de dados
 A aplicação deve permitir que o próprio usuários visualize os seus PRÓPRIOS dados. Uma vez que eles estão AUTENTICADOS.
 
 A aplicação deverá permitir que os usuários visualizem os dados NÃO SENSÍVEIS de outros usuários.
