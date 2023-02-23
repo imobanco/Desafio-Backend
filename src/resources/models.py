@@ -1,0 +1,1 @@
+from resources.models import User

@@ -29,7 +29,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',   
 
-    'app',
+    # 'users',
+    'api',
+    'resources',
 ]
 
 REST_FRAMEWORK = {
@@ -38,7 +40,7 @@ REST_FRAMEWORK = {
     ),
 }
 
-AUTH_USER_MODEL = "app.Profile"
+AUTH_USER_MODEL = "resources.User"
 
 
 MIDDLEWARE = [
