@@ -10,5 +10,9 @@ make:
 migrate:
 	docker exec -it imo_api ./manage.py migrate
 
+admin:
+	docker exec -it imo_api ./manage.py createadmin
+
+
 logs:
 	docker attach imo_api
