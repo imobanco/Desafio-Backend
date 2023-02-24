@@ -4,7 +4,7 @@ from api.services.users import UserDetailsService, UserMeService, UserCreateServ
 from api.services.account import AccountMeService
 from api.services.deposit import DepositCreateService
 from api.services.transfer import TransferCreateService, TransferPublicService, TransferDetailsService
-from api.services.comment import CommentCreateService
+from api.services.comment import CommentCreateService, CommentDetailsService
 
 
 urlpatterns = [
@@ -21,4 +21,5 @@ urlpatterns = [
     path('transfer/<uuid:id>/', TransferDetailsService.as_view()),
 
     path('comment/', CommentCreateService.as_view()),
+    path('comment/<uuid:id>/', CommentDetailsService.as_view()),
 ]
