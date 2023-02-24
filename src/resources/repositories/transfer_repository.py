@@ -1,6 +1,7 @@
-from typing import Dict
+from typing import Dict, List
 import uuid
 from resources.repositories.base_repository import BaseRepository
+from django.db.models import Q
 from resources.models import Account, User, Transfer
 
 
@@ -35,3 +36,19 @@ class TransferRepository(BaseRepository):
             self._update_price_origin(user, data.get('value'))
             self._update_price_destiny(transfer.destiny, transfer.value )
             return transfer
+    
+    def me_transfers(self, user: User) -> List[Transfer]:
+        account = user.account_set.first()
+        query = Q(Q(origin=account) | Q(destiny=account))
+        transfers = self.find_all(query)
+        return transfers
+
+    def get_public_transfers(self) -> List[Transfer]:
+        query = Q(public=True)
+        transfers = self.find_all(query)
+        return transfers
+
+    def update_transfer(self, id: uuid.UUID, data) -> Transfer:
+        query = Q(public=True)
+        transfer = self.update(id, data,query)
+        return transfer
