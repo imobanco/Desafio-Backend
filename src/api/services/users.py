@@ -7,10 +7,13 @@ from resources.serializers.user_serialize import UserSerializer
 
 
 class UserDetailsService(views.APIView):
+    permission_classes = (IsAuthenticated,)
+
     def get(self, request, id, format=None):
         user = UserRepository().find(id=id)
         serializer = UserSerializer(user, many=False)
         return Response(serializer.data)
+
 
 
 class UserMeService(views.APIView):
@@ -18,6 +21,12 @@ class UserMeService(views.APIView):
 
     def get(self, request):
         user = UserRepository().find(id=request.user.id)
+        serializer = UserSerializer(user, many=False)
+        return Response(serializer.data)
+
+    def patch(self, request):
+        user = UserRepository().update_user(request=request.data, id=request.user.id)
+
         serializer = UserSerializer(user, many=False)
         return Response(serializer.data)
 

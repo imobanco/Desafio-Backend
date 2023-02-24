@@ -10,4 +10,15 @@ class UserRepository(BaseRepository):
         user = self.create(request)
         user.set_password(password)
         user.save()
+        
+        return user
+
+    def update_user(self, request, id) -> User:
+        password = request.pop('password')
+        request.pop('email')
+        request.pop('username')
+        user = self.update(id, request)
+        if password:
+            user.set_password(password)
+            user.save()
         return user
