@@ -16,12 +16,12 @@ class BaseRepository:
             raise Http404
     
     def find_all(self, query):
-        return self.model.objects.filter(**query)
+        return self.model.objects.filter(query)
     
     def create(self, data: Dict):
         return self.model.objects.create(**data)
 
-    def update(self, id: uuid.UUID, data: Dict):
-        self.model.objects.filter(id=id).update(**data)
+    def update(self, id: uuid.UUID, data: Dict, query=None):
+        self.model.objects.filter(id=id).filter(query).update(**data)
         return self.find(id)
-        
+

@@ -3,7 +3,8 @@ from django.urls import path
 from api.services.users import UserDetailsService, UserMeService, UserCreateService
 from api.services.account import AccountMeService
 from api.services.deposit import DepositCreateService
-from api.services.transfer import TransferCreateService
+from api.services.transfer import TransferCreateService, TransferPublicService, TransferDetailsService
+from api.services.comment import CommentCreateService
 
 
 urlpatterns = [
@@ -16,4 +17,8 @@ urlpatterns = [
     path('deposit/', DepositCreateService.as_view()),
 
     path('transfer/', TransferCreateService.as_view()),
+    path('transfer/public/', TransferPublicService.as_view()),
+    path('transfer/<uuid:id>/', TransferDetailsService.as_view()),
+
+    path('comment/', CommentCreateService.as_view()),
 ]

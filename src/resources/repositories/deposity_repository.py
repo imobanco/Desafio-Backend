@@ -1,5 +1,7 @@
 from typing import Dict, List
 import uuid
+from django.db.models import Q
+
 from resources.repositories.base_repository import BaseRepository
 
 from resources.models import Deposit, User
@@ -23,6 +25,6 @@ class DepositRepository(BaseRepository):
     
     def get_all_deposits(self, user) -> List[Deposit]:
         account = user.account_set.first()
-        query = {'account_id':  account.id}
+        query = Q(account=account)
         deposits = self.find_all(query)
         return deposits
