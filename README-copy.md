@@ -28,6 +28,9 @@ simple jwt - para autenticacao via jwt
 - [x] - RF4.4 Deleção de dados
 - [x] - RF5.0 Dados do comentário
 - [x] - RF5.1 Criação de comentário
+- [x] - RF5.2 Visualização de dados
+- [x] - RF5.3 Atualização de dados
+
 
 ## Endpoints
 
@@ -42,4 +45,7 @@ simple jwt - para autenticacao via jwt
 - `GET /api/transfer/` - Lista todas as transfencias relacionadadas a um usuario logado, sejam enviadas ou recebidas
 - `GET /api/transfer/public/` - Lista todas as transfencias que nao publicas
 - `PATCH /api/transfer/{id_tranfer}/` - Atualiza informacoes de uma transferencia publica
-- `POST /api/comment/` - Cria um comentario a partir de uma transferencia
+- `POST /api/comment/` - Cria um comentario a partir de uma transferencia | Falta validacao para verificar se transferencia eh publica.
+- `GET /api/comment/` - Listagem dos comentarios do usuario logado
+- `GET /api/comment/{id_comment}` - Visualizar comentario pelo id
+- `PATCH /api/comment/{id_comment}` - Atualiza informacoes de comentarios
