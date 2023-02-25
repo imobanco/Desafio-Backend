@@ -37,6 +37,6 @@ class TransferDetailsView(views.APIView):
     service = TransferService(TransferRepository())
 
     def patch(self, request, id):
-        transfer = self.service.update_transfer(id, request)
+        transfer = self.service.put_transfer(id, request)
         serializer = TransferMeSerializer(transfer)
         return Response(serializer.data)

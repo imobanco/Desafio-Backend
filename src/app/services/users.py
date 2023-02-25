@@ -12,7 +12,7 @@ class UserService:
         self.user_repository = user_repository
         self.model = User
 
-    def get_user(self, id: UUID, request: Request) -> User:
+    def get_user(self, id: UUID = None, request: Request = None) -> User:
         if id:
             user = self.user_repository.find_user(id=id)
         else:

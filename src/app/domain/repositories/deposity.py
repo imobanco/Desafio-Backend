@@ -9,6 +9,9 @@ from app.domain.models.user import User
 
 
 class DepositRepository(BaseRepository):
+    def __init__(self) -> None:
+        self.model = Deposit
+
     def _increase_balance(self, account: Account, value: float):
         account.balance += value
         account.save()

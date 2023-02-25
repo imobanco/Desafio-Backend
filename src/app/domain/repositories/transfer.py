@@ -10,6 +10,8 @@ from app.domain.models.transfer import Transfer
 
 
 class TransferRepository(BaseRepository):
+    def __init__(self) -> None:
+        self.model = Transfer
 
     def verify_account_balance(self, account: Account, value: float) -> bool:
         return account.balance >= value
@@ -25,6 +27,7 @@ class TransferRepository(BaseRepository):
     def create_transfer(self, data: Dict, user: User) -> Transfer:
         account = user.account_set.first()
         data['origin_id'] = account.id
+        data['destiny_id'] = data.pop('destiny')
         if self.verify_account_balance(account, data.get('value')):
             transfer = self.create(data)
             self.decrease_balance(transfer.origin, transfer.value)

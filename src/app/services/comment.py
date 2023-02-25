@@ -1,4 +1,4 @@
-from typing import Dict, List
+from typing import  List
 import uuid
 from rest_framework.request import Request
 
@@ -11,7 +11,8 @@ class CommentService:
        self.comment_repository = comment_repository
        self.model = Comment
 
-    def post_comment(self, data: Dict, request: Request) -> Comment:
+    def post_comment(self, request: Request) -> Comment:
+        data = request.data
         data['user'] = request.user
         comment = self.comment_repository.create(data)
         return comment
@@ -22,8 +23,8 @@ class CommentService:
 
     def get_comment(self, id: uuid.UUID) -> Comment:
         comment = self.comment_repository.find_comment(id)
-        return comment.first()
+        return comment
 
-    def put_comment(self, request: Request) -> Comment:
+    def put_comment(self, id: uuid.UUID, request: Request) -> Comment:
         comment = self.comment_repository.update(id, request.data)
         return comment

@@ -4,6 +4,8 @@ from app.domain.models.account import Account
 
 
 class AccountRepository(BaseRepository):
+    def __init__(self) -> None:
+        self.model = Account
 
     def create_account(self, user: User) -> Account:
         data = {'balance': 0.0}

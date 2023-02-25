@@ -5,6 +5,8 @@ from app.domain.models.user import User
 
 
 class UserRepository(BaseRepository):
+    def __init__(self) -> None:
+        self.model = User
 
     def find_user(self, id: UUID = None, user: User = None):
         if id:

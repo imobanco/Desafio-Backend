@@ -9,6 +9,8 @@ from app.domain.models.user import User
 
 
 class CommentRepository(BaseRepository):
+    def __init__(self) -> None:
+        self.model = Comment
 
     def create_comment(self, data: Dict, user: User) -> Comment:
         data['user'] = user
