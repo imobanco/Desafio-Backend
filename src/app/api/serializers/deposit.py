@@ -7,3 +7,6 @@ class DepositSerializer(serializers.ModelSerializer):
     class Meta:
         model = Deposit
         fields = "__all__"
+
+    def create(self, validated_data):
+        return Deposit(**validated_data)
