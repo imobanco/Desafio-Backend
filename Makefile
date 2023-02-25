@@ -13,5 +13,8 @@ migrate:
 admin:
 	docker exec -it imo_api ./manage.py createadmin
 
+test:
+	docker exec -it imo_api ./manage.py test --keepdb
+
 logs:
 	docker attach imo_api

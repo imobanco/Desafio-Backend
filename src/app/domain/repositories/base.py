@@ -2,8 +2,6 @@ import uuid
 from typing import Dict
 
 from django.db.models import Q
-from django.db import InternalError, DatabaseError
-from django.http import Http404, HttpResponseServerError
 
 
 class BaseRepository:
@@ -11,11 +9,7 @@ class BaseRepository:
         try:
             return self.model.objects.get(id=id)
         except self.model.DoesNotExist:
-            raise Http404
-        except InternalError:
-            return HttpResponseServerError
-        except DatabaseError:
-            raise Http404
+            return False
 
     def find_by_query(self, query):
         return self.model.objects.filter(query)

@@ -34,9 +34,9 @@ class UserMeView(views.APIView):
 
 
 class UserCreateView(views.APIView):
+    service = UserService(UserRepository())
 
     def post(self, request):
-        password = request.data.get('password')
-        user = UserRepository().create_user(request.data, password)
+        user =  self.service.post_user(request)
         serializer = UserSerializer(user, many=False)
         return Response(serializer.data)
