@@ -12,16 +12,12 @@ class TransferCreateView(views.APIView):
     service = TransferService(TransferRepository())
 
     def post(self, request):
-        transfer = self.service.post_transfer(request.data, request.user)
-
-        # transfer = TransferRepository().create_transfer(request.data, request.user)
+        transfer = self.service.post_transfer(request)
         serializer =TransferSerializer(transfer, many=False)
         return Response(serializer.data)
 
     def get(self, request):
-        transfers = self.service.get_transfers(request.user)
-
-        # transfers = TransferRepository().me_transfers(request.user)
+        transfers = self.service.get_transfers(request)
         serializer = TransferMeSerializer(transfers, many=True)
         return Response(serializer.data)
 
@@ -30,11 +26,8 @@ class TransferPublicView(views.APIView):
     permission_classes = (IsAuthenticated,)
     service = TransferService(TransferRepository())
 
-
     def get(self, request):
         transfers = self.service.get_public_transfers()
-
-        # transfers = TransferRepository().get_public_transfers()
         serializer = TransferMeSerializer(transfers, many=True)
         return Response(serializer.data)
 
@@ -43,10 +36,7 @@ class TransferDetailsView(views.APIView):
     permission_classes = (IsAuthenticated,)
     service = TransferService(TransferRepository())
 
-
     def patch(self, request, id):
-
-        transfer = self.service.update_transfer(id, request.data)
-        transfer = TransferRepository().put_transfer(id, request.data)
+        transfer = self.service.update_transfer(id, request)
         serializer = TransferMeSerializer(transfer)
         return Response(serializer.data)

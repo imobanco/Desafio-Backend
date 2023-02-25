@@ -1,28 +1,36 @@
 
-from app.domain.models.user import User
+from uuid import UUID
 
-from app.domain.repositories.base import BaseRepository
+from rest_framework.request import Request
+
 from app.domain.repositories.user import UserRepository
 from app.domain.models.user import User
 
 
-class UserRepository(BaseRepository):
+class UserService:
     def __init__(self, user_repository: UserRepository):
         self.user_repository = user_repository
         self.model = User
 
-    def create_user(self, request, password) -> User:
-        user = self.user_repository.create(request)
-        user.set_password(password)
-        user.save()
+    def get_user(self, id: UUID, request: Request) -> User:
+        if id:
+            user = self.user_repository.find_user(id=id)
+        else:
+            user = self.user_repository.find_user(user=request.user)
         return user
 
-    def update_user(self, request, id) -> User:
-        password = request.pop('password')
-        request.pop('email')
-        request.pop('username')
-        user = self.user_repository.update(id, request)
-        if password:
-            user.set_password(password)
-            user.save()
+    def post_user(self, request: Request) -> User:
+        data = request.data
+        password = data.get('password')
+
+        user = self.user_repository.create_user(data, password)
+        return user
+
+    def put_user(self, request: Request) -> User:
+        data = request.data
+        data.pop('email')
+        data.pop('username')
+        password = data.pop('password')
+
+        user = self.user_repository.update_user(request.user, data, password)
         return user
