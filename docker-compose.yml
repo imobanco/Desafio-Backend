@@ -9,7 +9,7 @@ services:
     environment:
       - POSTGRES_USER=imo_banco
       - POSTGRES_PASSWORD=imo_banco
-      - POSTGRES_DB=imo2023
+      - POSTGRES_DB=imo_database
     volumes:
       - pgdata:/data/postgres
   web:

@@ -3,14 +3,12 @@ from app.domain.models.user import User
 
 
 class UserRepository(BaseRepository):
-    def __init__(self) -> None:
-        self.model = User
-    
+
     def create_user(self, request, password) -> User:
         user = self.create(request)
         user.set_password(password)
         user.save()
-        
+
         return user
 
     def update_user(self, request, id) -> User:

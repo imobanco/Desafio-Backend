@@ -25,10 +25,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'rest_framework_simplejwt',   
+    'rest_framework_simplejwt',
 
     'app',
-    # 'resources',
 ]
 
 REST_FRAMEWORK = {
@@ -37,7 +36,7 @@ REST_FRAMEWORK = {
     ),
 }
 
-AUTH_USER_MODEL = "resources.User"
+AUTH_USER_MODEL = "app.User"
 
 
 MIDDLEWARE = [
@@ -77,7 +76,7 @@ WSGI_APPLICATION = 'imo_banco.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "imo2023",
+        "NAME": "imo_database",
         "USER": "imo_banco",
         "PASSWORD": "imo_banco",
         "HOST": "db_imo",  # External IP: 187.94.99.230

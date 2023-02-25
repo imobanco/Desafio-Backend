@@ -16,10 +16,10 @@ class BaseRepository:
             return HttpResponseServerError
         except DatabaseError:
             raise Http404
-    
-    def find_all(self, query):
+
+    def find_by_query(self, query):
         return self.model.objects.filter(query)
-    
+
     def create(self, data: Dict):
         return self.model.objects.create(**data)
 
