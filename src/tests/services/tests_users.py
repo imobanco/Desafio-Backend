@@ -7,7 +7,7 @@ from app.domain.repositories.user import UserRepository
 from app.services.users import UserService
 
 
-class DisciplineListViewTest(TestCase):
+class UserServiceTest(TestCase):
     @classmethod
     def setUpTestData(cls):
         cls.factory = APIRequestFactory()
