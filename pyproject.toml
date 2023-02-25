@@ -16,6 +16,8 @@ djangorestframework-simplejwt = "^5.2.2"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^6.0.0"
+ruff = "^0.0.252"
+pre-commit = "^3.1.0"
 
 [build-system]
 requires = ["poetry-core"]
