@@ -10,7 +10,7 @@ from app.domain.repositories.deposity import DepositRepository
 from app.services.deposit import DepositService
 
 
-class AccountServiceTest(TestCase):
+class DepositServiceTest(TestCase):
     @classmethod
     def setUpTestData(cls):
         cls.factory = APIRequestFactory()
