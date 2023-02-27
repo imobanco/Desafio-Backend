@@ -27,3 +27,7 @@ class TransferService:
     def put_transfer(self, id: UUID, request: Request) -> Transfer:
         transfer = self.transfer_repository.update_transfer(id, request.data)
         return transfer
+
+    def delete_transfer(self, id: UUID) -> None:
+        self.transfer_repository.delete_transfer(id)
+        return

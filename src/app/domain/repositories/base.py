@@ -20,3 +20,6 @@ class BaseRepository:
     def update(self, id: uuid.UUID, data: Dict, query=Q()):
         self.model.objects.filter(id=id).filter(query).update(**data)
         return self.find(id)
+
+    def remove(self, id: uuid.UUID):
+        self.model.objects.filter(id=id).delete()

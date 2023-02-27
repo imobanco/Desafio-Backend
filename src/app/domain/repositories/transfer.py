@@ -47,3 +47,11 @@ class TransferRepository(BaseRepository):
     def update_transfer(self, id: uuid.UUID, data: Dict) -> Transfer:
         transfer = self.update(id, data, Q(public=True))
         return transfer
+
+    def delete_transfer(self, id: uuid.UUID) -> None:
+        transfer = self.find(id)
+
+        value = transfer.value
+        self.remove(id)
+        self.decrease_balance(transfer.destiny, value)
+        self.increase_balance(transfer.origin, value)

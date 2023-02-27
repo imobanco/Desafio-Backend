@@ -1,10 +1,11 @@
-from rest_framework import views
+from rest_framework import views, status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 
 from app.domain.repositories.transfer import TransferRepository
 from app.services.transfer import TransferService
 from app.api.serializers.transfer import TransferMeSerializer, TransferSerializer
+from app.permissions import OwnProfilePermission
 
 
 class TransferCreateView(views.APIView):
@@ -33,10 +34,14 @@ class TransferPublicView(views.APIView):
 
 
 class TransferDetailsView(views.APIView):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated, OwnProfilePermission)
     service = TransferService(TransferRepository())
 
     def patch(self, request, id):
         transfer = self.service.put_transfer(id, request)
         serializer = TransferMeSerializer(transfer)
         return Response(serializer.data)
+
+    def delete(self, request, id):
+        self.service.delete_transfer(id)
+        return Response(status=status.HTTP_204_NO_CONTENT)
