@@ -16,5 +16,11 @@ admin:
 test:
 	docker exec -it imo_api ./manage.py test --keepdb
 
+coverage:
+	docker exec -it imo_api coverage run manage.py test --keepdb
+
+html:
+	docker exec -it imo_api coverage html
+
 logs:
 	docker attach imo_api
