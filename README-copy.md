@@ -9,9 +9,17 @@
 
 ## Comandos pelo Makefile
 
-| email do usuário | senha |
-| ---------------- | ----- |
-| admin@com.br     | 123   |
+| comando       | funcionalidade                                  |
+| ------------- | ----------------------------------------------- |
+| make run      | Iniciar projeto                                 |
+| make bash     | Abrir terminal do projeto                       |
+| make make     | Criar arquivos de migracao                      |
+| make migrate  | Criar migracoes no banco de dados               |
+| make admin    | Criar super usuario                             |
+| make test     | Rodar os testes unitarios                       |
+| make coverage | Rodar testes para gerar relatorios de cobertura |
+| make html     | Gerar arquivos de cobertura de teste            |
+| make logs     | Visualizar logs da aplicacao                    |
 
 ## Como utilizar o projeto
 
@@ -41,17 +49,9 @@ $ make admin
 
 As credenciais do usuário administrador são:
 
-| comando       | funcionalidade                                  |
-| ------------- | ----------------------------------------------- |
-| make run      | Iniciar projeto                                 |
-| make bash     | Abrir terminal do projeto                       |
-| make make     | Criar arquivos de migracao                      |
-| make migrate  | Criar migracoes no banco de dados               |
-| make admin    | Criar super usuario                             |
-| make test     | Rodar os testes unitarios                       |
-| make coverage | Rodar testes para gerar relatorios de cobertura |
-| make html     | Gerar arquivos de cobertura de teste            |
-| make logs     | Visualizar logs da aplicacao                    |
+| email do usuário | senha |
+| ---------------- | ----- |
+| admin@com.br     | 123   |
 
 ## Testes unitários
 
