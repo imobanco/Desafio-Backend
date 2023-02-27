@@ -17,47 +17,38 @@ class CommentServiceTest(TestCase):
         cls.factory = APIRequestFactory()
         cls.service = CommentService(CommentRepository())
         cls.user = User.objects.get_or_create(
-            email='user@email.com',
-            full_name='user',
+            email="user@email.com",
+            full_name="user",
             cpf="123123",
             phone="123123",
-            birthdate='1998-01-01'
+            birthdate="1998-01-01",
         )[0]
         cls.account = Account.objects.get(user=cls.user)
 
         cls.user1 = User.objects.get_or_create(
-            username='user1',
-            email='user1@email.com',
-            full_name='user1',
+            username="user1",
+            email="user1@email.com",
+            full_name="user1",
             cpf="000111",
             phone="000111",
-            birthdate='1998-01-01'
+            birthdate="1998-01-01",
         )[0]
 
         cls.account1 = Account.objects.get(user=cls.user1)
 
         cls.tranfer = Transfer.objects.get_or_create(
-            origin=cls.account,
-            destiny=cls.account1,
-            value=100,
-            public=True
-            )[0]
+            origin=cls.account, destiny=cls.account1, value=100, public=True
+        )[0]
 
     def test_post_comment(self):
         request = Request
         request.user = self.user
-        data = {
-            "text": "that is crazy",
-            "transfer_id": self.tranfer.id
-            }
+        data = {"text": "that is crazy", "transfer_id": self.tranfer.id}
         request.data = data
 
         response = self.service.post_comment(request)
         self.assertEqual(Comment.objects.all().count(), 1)
-        self.assertEqual(
-            Comment.objects.get(text='that is crazy').id,
-            response.id
-            )
+        self.assertEqual(Comment.objects.get(text="that is crazy").id, response.id)
 
     def test_get_comments(self):
         Comment.objects.create(user=self.user, transfer=self.tranfer)
@@ -79,13 +70,11 @@ class CommentServiceTest(TestCase):
         self.assertTrue(response)
 
     def test_put_comment(self):
-        data = {
-            "text": "go go eagles"
-        }
+        data = {"text": "go go eagles"}
         comment = Comment.objects.create(user=self.user, transfer=self.tranfer)
         request = Request
         request.user = self.user
         request.data = data
         response = self.service.put_comment(comment.id, request)
 
-        self.assertEqual(response.text, data['text'])
+        self.assertEqual(response.text, data["text"])

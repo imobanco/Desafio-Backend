@@ -15,10 +15,18 @@ class TransferMeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Transfer
-        fields = ('id', 'value', 'description', 'public', 'created_at', 'origin', 'destiny')
+        fields = (
+            "id",
+            "value",
+            "description",
+            "public",
+            "created_at",
+            "origin",
+            "destiny",
+        )
 
     def get_origin(self, obj):
         return obj.origin.user.full_name
-    
+
     def get_destiny(self, obj):
         return obj.destiny.user.full_name

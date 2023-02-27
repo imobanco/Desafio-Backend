@@ -1,6 +1,6 @@
 from uuid import UUID
 
-from typing import  List
+from typing import List
 from rest_framework.request import Request
 
 from app.domain.models.transfer import Transfer

@@ -11,7 +11,7 @@ class UserRepository(BaseRepository):
         self.model = User
 
     def find_user_exist(self, email: str) -> boolean:
-        user =  self.find_by_query(query=Q(email=email))
+        user = self.find_by_query(query=Q(email=email))
         return user.exists()
 
     def find_user(self, id: UUID = None, user: User = None):

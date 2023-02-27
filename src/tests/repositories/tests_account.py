@@ -13,11 +13,11 @@ class AccountRepositoryTest(TestCase):
         cls.factory = APIRequestFactory()
         cls.repository = AccountRepository()
         cls.user = User.objects.get_or_create(
-            email='user@email.com',
-            full_name='user',
+            email="user@email.com",
+            full_name="user",
             cpf="123123",
             phone="123123",
-            birthdate='1998-01-01'
+            birthdate="1998-01-01",
         )[0]
 
     def test_repository_create_account(self):

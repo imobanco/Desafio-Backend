@@ -8,7 +8,7 @@ class AccountRepository(BaseRepository):
         self.model = Account
 
     def create_account(self, user: User) -> Account:
-        data = {'balance': 0.0}
+        data = {"balance": 0.0}
         account = self.create(data)
         account.user = user
         account.save()

@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 
 from app.services.account import AccountService
-from app.domain.repositories.account  import AccountRepository
+from app.domain.repositories.account import AccountRepository
 from app.api.serializers.account import AccountSerializer
 
 

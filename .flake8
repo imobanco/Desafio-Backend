@@ -1,5 +1,12 @@
 [flake8]
 # ignore = D203
-exclude = .git,__pycache__
+exclude =
+    .git,
+    __pycache__,
+    */migrations/*,
+    apps.py,
+    __init__.py
+    models.py,
+    settings.py
 max-complexity = 10
 max-line-length = 90

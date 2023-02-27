@@ -14,7 +14,7 @@ class TransferCreateView(views.APIView):
 
     def post(self, request):
         transfer = self.service.post_transfer(request)
-        serializer =TransferSerializer(transfer, many=False)
+        serializer = TransferSerializer(transfer, many=False)
         return Response(serializer.data)
 
     def get(self, request):

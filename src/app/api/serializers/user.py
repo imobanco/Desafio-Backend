@@ -6,4 +6,12 @@ from app.domain.models.user import User
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'username', 'email', 'full_name', 'birthdate', 'phone', 'cpf',)
+        fields = (
+            "id",
+            "username",
+            "email",
+            "full_name",
+            "birthdate",
+            "phone",
+            "cpf",
+        )

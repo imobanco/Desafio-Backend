@@ -14,7 +14,7 @@ class Command(BaseCommand):
                 is_staff=True,
                 cpf="123123",
                 phone="123123",
-                birthdate='1998-01-01'
+                birthdate="1998-01-01",
             )
             user.set_password("123")
             user.save()

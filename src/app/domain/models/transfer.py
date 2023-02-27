@@ -7,8 +7,12 @@ from app.domain.models import Account
 
 class Transfer(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
-    origin = models.ForeignKey(Account, on_delete=models.SET_NULL, related_name='transfer_origin', null=True)
-    destiny = models.ForeignKey(Account, on_delete=models.SET_NULL, related_name='transfer_destiny', null=True)
+    origin = models.ForeignKey(
+        Account, on_delete=models.SET_NULL, related_name="transfer_origin", null=True
+    )
+    destiny = models.ForeignKey(
+        Account, on_delete=models.SET_NULL, related_name="transfer_destiny", null=True
+    )
     value = models.FloatField(null=True)
     description = models.TextField(null=True)
     public = models.BooleanField(default=False)

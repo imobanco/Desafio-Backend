@@ -11,11 +11,11 @@ class UserServiceTest(TestCase):
         cls.factory = APIRequestFactory()
         cls.repository = UserRepository()
         cls.user = User.objects.get_or_create(
-            email='user@email.com',
-            full_name='user',
+            email="user@email.com",
+            full_name="user",
             cpf="123123",
             phone="123123",
-            birthdate='1998-01-01'
+            birthdate="1998-01-01",
         )[0]
 
     def test_repository_find_user_by_id(self):
@@ -35,10 +35,10 @@ class UserServiceTest(TestCase):
             "full_name": "Mahomes",
             "birthdate": "1998-01-23",
             "phone": "00-00-00",
-            "cpf": "00-00-00"
-            }
+            "cpf": "00-00-00",
+        }
 
         response = self.repository.update_user(self.user, data)
 
-        self.assertEqual(response.username, data['username'])
-        self.assertTrue(User.objects.filter(username='mahomes').exists())
+        self.assertEqual(response.username, data["username"])
+        self.assertTrue(User.objects.filter(username="mahomes").exists())

@@ -1,4 +1,4 @@
-from typing import  List
+from typing import List
 import uuid
 from rest_framework.request import Request
 
@@ -8,12 +8,12 @@ from app.domain.models.comment import Comment
 
 class CommentService:
     def __init__(self, comment_repository: CommentRepository):
-       self.comment_repository = comment_repository
-       self.model = Comment
+        self.comment_repository = comment_repository
+        self.model = Comment
 
     def post_comment(self, request: Request) -> Comment:
         data = request.data
-        data['user'] = request.user
+        data["user"] = request.user
         comment = self.comment_repository.create(data)
         return comment
 

@@ -13,7 +13,7 @@ class CommentRepository(BaseRepository):
         self.model = Comment
 
     def create_comment(self, data: Dict, user: User) -> Comment:
-        data['user'] = user
+        data["user"] = user
         comment = self.create(data)
 
         return comment

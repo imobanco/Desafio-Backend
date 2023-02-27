@@ -26,9 +26,9 @@ class TransferRepository(BaseRepository):
 
     def create_transfer(self, data: Dict, user: User) -> Transfer:
         account = user.account_set.first()
-        data['origin_id'] = account.id
-        data['destiny_id'] = data.pop('destiny')
-        if self.verify_account_balance(account, data.get('value')):
+        data["origin_id"] = account.id
+        data["destiny_id"] = data.pop("destiny")
+        if self.verify_account_balance(account, data.get("value")):
             transfer = self.create(data)
             self.decrease_balance(transfer.origin, transfer.value)
             self.increase_balance(transfer.destiny, transfer.value)

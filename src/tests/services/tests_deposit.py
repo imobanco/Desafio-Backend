@@ -17,27 +17,23 @@ class DepositServiceTest(TestCase):
         cls.service = DepositService(DepositRepository())
 
         cls.user = User.objects.get_or_create(
-            email='user@email.com',
-            full_name='user',
+            email="user@email.com",
+            full_name="user",
             cpf="123123",
             phone="123123",
-            birthdate='1998-01-01'
+            birthdate="1998-01-01",
         )[0]
         cls.account = Account.objects.get(user=cls.user)
         Deposit.objects.create(account=cls.account, value=200)
 
     def test_create_deposit(self):
-        data = {
-            "value": 10000,
-            "description": "add funds"
-        }
+        data = {"value": 10000, "description": "add funds"}
         request = Request
         request.user = self.user
         request.data = data
 
         response = self.service.create_deposit(request)
-        self.assertEqual(
-            Deposit.objects.filter(account=self.account).count(), 2)
+        self.assertEqual(Deposit.objects.filter(account=self.account).count(), 2)
         self.assertEqual(response.value, 10000)
 
     def test_get_deposit(self):

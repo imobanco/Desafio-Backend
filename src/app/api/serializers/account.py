@@ -6,4 +6,7 @@ from app.domain.models.account import Account
 class AccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
-        fields = ('id', 'balance',)
+        fields = (
+            "id",
+            "balance",
+        )

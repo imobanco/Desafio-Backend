@@ -13,11 +13,11 @@ class UserServiceTest(TestCase):
         cls.factory = APIRequestFactory()
         cls.service = UserService(UserRepository())
         cls.user = User.objects.get_or_create(
-            email='user@email.com',
-            full_name='user',
+            email="user@email.com",
+            full_name="user",
             cpf="123123",
             phone="123123",
-            birthdate='1998-01-01'
+            birthdate="1998-01-01",
         )[0]
 
     def test_get_user_by_id(self):
@@ -42,14 +42,14 @@ class UserServiceTest(TestCase):
             "full_name": "Mahomes",
             "birthdate": "1998-01-23",
             "phone": "00-00-00",
-            "cpf": "00-00-00"
-            }
+            "cpf": "00-00-00",
+        }
         request.data = data
 
         response = self.service.post_user(request=request)
 
-        self.assertEqual(response.username, data['username'])
-        self.assertTrue(User.objects.filter(username='mahomes').exists())
+        self.assertEqual(response.username, data["username"])
+        self.assertTrue(User.objects.filter(username="mahomes").exists())
 
     def test_put_user(self):
         request = Request
@@ -60,13 +60,13 @@ class UserServiceTest(TestCase):
             "full_name": "Mahomes",
             "birthdate": "1998-01-23",
             "phone": "00-00-00",
-            "cpf": "00-00-00"
-            }
+            "cpf": "00-00-00",
+        }
         request.data = data
         request.user = self.user
 
         response = self.service.put_user(request=request)
 
-        self.assertEqual(response.full_name, data['full_name'])
-        self.assertTrue(User.objects.filter(email='user@email.com').exists())
-        self.assertEqual(User.objects.filter(email='user@email.com').count(), 1)
+        self.assertEqual(response.full_name, data["full_name"])
+        self.assertTrue(User.objects.filter(email="user@email.com").exists())
+        self.assertEqual(User.objects.filter(email="user@email.com").count(), 1)

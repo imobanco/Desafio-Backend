@@ -18,7 +18,7 @@ class DepositRepository(BaseRepository):
 
     def create_deposit(self, data: Dict, user: User) -> Deposit:
         account = user.account_set.first()
-        data['account_id'] = account.id
+        data["account_id"] = account.id
         deposit = self.create(data)
         self._increase_balance(account, deposit.value)
         return deposit

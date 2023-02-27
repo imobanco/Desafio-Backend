@@ -15,25 +15,21 @@ class DepositRepositoryTest(TestCase):
         cls.repository = DepositRepository()
 
         cls.user = User.objects.get_or_create(
-            email='user@email.com',
-            full_name='user',
+            email="user@email.com",
+            full_name="user",
             cpf="123123",
             phone="123123",
-            birthdate='1998-01-01'
+            birthdate="1998-01-01",
         )[0]
         cls.account = Account.objects.get(user=cls.user)
         Deposit.objects.create(account=cls.account, value=200)
 
     def test_repository_create_deposit(self):
-        data = {
-            "value": 24_000,
-            "description": "add funds"
-        }
+        data = {"value": 24_000, "description": "add funds"}
 
         response = self.repository.create_deposit(data, self.user)
 
-        self.assertEqual(
-            Deposit.objects.filter(description='add funds').count(), 1)
+        self.assertEqual(Deposit.objects.filter(description="add funds").count(), 1)
         self.assertEqual(response.value, 24_000)
 
     def test_repository_find_deposits(self):

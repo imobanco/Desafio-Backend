@@ -15,11 +15,11 @@ class AccountServiceTest(TestCase):
         cls.factory = APIRequestFactory()
         cls.service = AccountService(AccountRepository())
         cls.user = User.objects.get_or_create(
-            email='user@email.com',
-            full_name='user',
+            email="user@email.com",
+            full_name="user",
             cpf="123123",
             phone="123123",
-            birthdate='1998-01-01'
+            birthdate="1998-01-01",
         )[0]
 
     def test_get_account_by_user(self):
@@ -27,6 +27,4 @@ class AccountServiceTest(TestCase):
         request.user = self.user
         response = self.service.get_account(request)
         self.assertTrue(Account.objects.filter(user=self.user).exists())
-        self.assertEqual(
-            response.balance,
-            Account.objects.get(user=self.user).balance)
+        self.assertEqual(response.balance, Account.objects.get(user=self.user).balance)
