@@ -18,10 +18,10 @@ repos:
     hooks:
       - id: ruff
   - repo: https://github.com/pycqa/flake8
-    rev: "" # pick a git hash / tag to point to
+    rev: 6.0.0
     hooks:
       - id: flake8
   - repo: https://github.com/psf/black
-    rev: stable
+    rev: 23.1.0
     hooks:
       - id: black
