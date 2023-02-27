@@ -1,10 +1,17 @@
-#
+# API BANCO - DDD
 
-Instalado
-Django
-Django rest framework
-psycopg2 - engine para utilizar o postgres
-simple jwt - para autenticacao via jwt
+## Considerações sobre o projeto
+
+- Todos ou sua grande maioria de requisitos do desafio foram atendidas
+- O projeto foi dockerizado por completo.
+- No campo dos padrões de projeto, foi adicionado o pre-commit, onde garantiremos uma melhor padronização do nosso código. Isso tudo antes de enviarmos para nosso repositório remoto.
+  - Foi adicionado o Makefile, onde teremos uma maior agilidade em executarmos alguns comandos.
+
+## Comandos pelo Makefile
+
+| email do usuário | senha |
+| ---------------- | ----- |
+| admin@com.br     | 123   |
 
 ## Como utilizar o projeto
 
@@ -34,9 +41,17 @@ $ make admin
 
 As credenciais do usuário administrador são:
 
-| email do usuário | senha |
-| ---------------- | ----- |
-| admin@com.br     | 123   |
+| comando       | funcionalidade                                  |
+| ------------- | ----------------------------------------------- |
+| make run      | Iniciar projeto                                 |
+| make bash     | Abrir terminal do projeto                       |
+| make make     | Criar arquivos de migracao                      |
+| make migrate  | Criar migracoes no banco de dados               |
+| make admin    | Criar super usuario                             |
+| make test     | Rodar os testes unitarios                       |
+| make coverage | Rodar testes para gerar relatorios de cobertura |
+| make html     | Gerar arquivos de cobertura de teste            |
+| make logs     | Visualizar logs da aplicacao                    |
 
 ## Testes unitários
 
