@@ -16,7 +16,6 @@ class TransferService:
         transfer = self.transfer_repository.create_transfer(request.data, request.user)
         return transfer
 
-
     def get_transfers(self, request: Request) -> List[Transfer]:
         transfers = self.transfer_repository.find_transfers(request.user)
         return transfers
