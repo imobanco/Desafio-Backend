@@ -6,6 +6,55 @@ Django rest framework
 psycopg2 - engine para utilizar o postgres
 simple jwt - para autenticacao via jwt
 
+## Como utilizar o projeto
+
+> ⚠ **Atenção**
+>
+> É necessário ter o docker e o docker compose instalados em seu computador.
+
+```bash
+# Clone o repositorio
+$ git clone https://github.com/peidrao/Desafio-Backend.git
+# entre no diretorio
+$ cd Desafio-Backend
+# Instalando projeto
+$ make run
+# Vendo se o projeto fez o start
+$ make logs
+# Criacao de migracoes no banco de dados
+$ make migrate
+```
+
+## Criando usuário administrador
+
+```bash
+# Para criar super usuario
+$ make admin
+```
+
+As credenciais do usuário administrador são:
+
+| email do usuário | senha |
+| ---------------- | ----- |
+| admin@com.br     | 123   |
+
+## Testes unitários
+
+O projeto tem cobertura de 93%, ou seja, para quase todo código existem testes unitários
+
+```bash
+# Rodar os testes
+$ make test
+# Verificar cobertura
+$ make coverage
+# Gerar arquivos html
+$ make html
+```
+
+> ⚠ **Atenção**
+>
+> O make html irá gerar um diretório dentro do nosso projeto chamado **htmlcov**. Dentro dele existem vários arquivos html, e entre eles o **index.html**, basta abrir o mesmo no navegador e teremos a porcentagem mais arquivos que estão cobertos.
+
 ## Requisitos
 
 - [x] - RF1.1 Cadastro de usuário
@@ -30,7 +79,7 @@ simple jwt - para autenticacao via jwt
 - [x] - RF5.1 Criação de comentário
 - [x] - RF5.2 Visualização de dados
 - [x] - RF5.3 Atualização de dados
-
+- [x] - RF5.4 Deleção de dados
 
 ## Endpoints
 
@@ -45,6 +94,7 @@ simple jwt - para autenticacao via jwt
 - `GET /api/transfer/` - Lista todas as transfencias relacionadadas a um usuario logado, sejam enviadas ou recebidas
 - `GET /api/transfer/public/` - Lista todas as transfencias que nao publicas
 - `PATCH /api/transfer/{id_tranfer}/` - Atualiza informacoes de uma transferencia publica
+- `DELETE /api/transfer/{id_tranfer}/` - Remove transferencia
 - `POST /api/comment/` - Cria um comentario a partir de uma transferencia | Falta validacao para verificar se transferencia eh publica.
 - `GET /api/comment/` - Listagem dos comentarios do usuario logado
 - `GET /api/comment/{id_comment}` - Visualizar comentario pelo id
